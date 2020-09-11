@@ -1,0 +1,43 @@
+{
+  "chrome": {
+    "default": "77.0",
+    "versions": {
+      "77.0": {
+        "image": "selenoid/chrome:77.0",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=1024m",
+          "/var": "size=512m"
+        },
+        "shmSize": 268435456,
+        "cpu": "1.0",
+        "mem": "2048m"
+      },
+      "76.0": {
+        "image": "selenoid/chrome:76.0",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=1024m",
+          "/var": "size=512m"
+        },
+        "cpu": "1.0",
+        "shmSize": 268435456,
+        "mem": "2048m"
+      },
+      "75.0": {
+        "image": "selenoid/chrome:75.0",
+        "port": "4444",
+        "path": "/",
+        "tmpfs": {
+          "/tmp": "size=1024m",
+          "/var": "size=512m"
+        },
+        "cpu": "1.0",
+        "shmSize": 268435456,
+        "mem": "2048m"
+      }
+    }
+  }
+}

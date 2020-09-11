@@ -1,0 +1,27 @@
+version: '3.5'
+networks:
+  default:
+    driver: bridge
+    name: somenetworkname
+services:
+  selenoid:
+    image: aerokube/selenoid:latest-release
+    volumes:
+      - "path_to_browser.json:/etc/selenoid/:rw"
+      - "path_to_video_directory:/opt/selenoid/video/:rw"
+      - "//var/run/docker.sock:/var/run/docker.sock"
+    environment:
+      - OVERRIDE_VIDEO_OUTPUT_DIR=path_to_video_directory
+    command: ["-limit","4",
+              "-video-output-dir", "/opt/selenoid/video/",
+              "-container-network", "somenetworkname"]
+    ports:
+      - "4444:4444"
+
+  selenoid-ui:
+    image: aerokube/selenoid-ui:latest-release
+    links:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: ["--selenoid-uri", "http://selenoid:4444"]
